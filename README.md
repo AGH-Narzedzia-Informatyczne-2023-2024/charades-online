@@ -1,6 +1,7 @@
 # Charades Online
 
 A web project representing the well-known online game - charades
+A canvas-based game where you can create a room and play online with your friends!
 
 ## Getting Started
 
@@ -32,6 +33,12 @@ Running your locally built production version of the app:
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Express](https://expressjs.com/)
 * [Socket.IO](https://socket.io/)
+
+## To-do
+* Rooms logic
+* Canvas handling 
+* Guessing words logic
+* Server side
 
 ## License
 
