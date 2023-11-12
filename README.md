@@ -1,6 +1,6 @@
 # Charades Online
 
-A web project representing the well-known online game - charades
+A web project representing the well-known online game - charades. 
 A canvas-based game where you can create a room and play online with your friends!
 
 ## Getting Started
@@ -53,8 +53,13 @@ Instructions that will help you in setting up and running the project locally
     * [ ] Website logo
     * [ ] Drawing tools images
 
-## License
+## Authors
+* [Adam Szlósarczyk](https://github.com/AdamSzL)
+* [Jakub Halfar](https://github.com/Kubapatimat)
+* [Maciej Jastrzębski](https://github.com/mJastrzebski6)
+* [Mateusz Battek](https://github.com/MateuszBattek)
 
+## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
 
 ## Acknowledgments
