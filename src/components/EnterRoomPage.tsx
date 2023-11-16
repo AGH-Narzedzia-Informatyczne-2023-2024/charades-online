@@ -8,17 +8,17 @@ function EnterRoomPage({changeStage}: EnterRoomPageInterface) {
     const [username, setUsername] = useState('')
 
     function joinPrivateRoom() {
-        alert('Joining a private room')
+		alert('Joining a private room')
     }
 
     return (
         <div className="flex flex-col items-center bg-gray-800 h-screen">
             <h1 className="text-3xl font-bold text-white py-3 my-5">
-			    Charades Online
-		    </h1>
-            <div className="flex flex-col w-2/12 gap-2 bg-gray-700 p-3">
+		  		Charades Online
+			</h1>
+            <div className="flex flex-col gap-3 bg-gray-700 p-3">
                 <input 
-                    className="border outline-none p-1"
+					className="border outline-none p-1 text-2xl"
                     type="text"
                     placeholder="Enter your name"
                     value={username}
