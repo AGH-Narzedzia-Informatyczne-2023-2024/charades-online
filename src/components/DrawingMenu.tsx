@@ -6,7 +6,8 @@ function DrawingMenu() {
     const [penSize, setPenSize] = useState(1)
 
     const penColors = [
-        "#000000", "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"
+        "#000000", "#ffffff", "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff",
+        "#ffa500", "#008080", "#654321", "#03fca1", "#ffb8e8", "#facfa7"
     ]
 
     const penSizeIncrementAmount = 1
