@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Dot from './Dot';
 
 interface EnterRoomPageInterface{
-    changeStage: (index:number) => void,
+    changeStage: (index:number) => void
 }
 
 function EnterRoomPage({changeStage}: EnterRoomPageInterface) {

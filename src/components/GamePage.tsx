@@ -1,7 +1,7 @@
 import DrawingMenu from "./DrawingMenu"
 
 interface GamePageInterface{
-    changeStage: (index:number) => void,
+    changeStage: (index:number) => void
 }
 
 function GamePage({changeStage}: GamePageInterface) {
