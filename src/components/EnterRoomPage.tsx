@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Dot from './Dot';
 
 interface EnterRoomPageInterface{
-    changeStage: CallableFunction,
+    changeStage: (index:number) => void
 }
 
 function EnterRoomPage({changeStage}: EnterRoomPageInterface) {
