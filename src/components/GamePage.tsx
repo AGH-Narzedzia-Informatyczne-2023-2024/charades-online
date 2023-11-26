@@ -1,7 +1,7 @@
 import DrawingMenu from "./DrawingMenu"
 
 interface GamePageInterface{
-    changeStage: Function,
+    changeStage: CallableFunction,
 }
 
 function GamePage({changeStage}: GamePageInterface) {
