@@ -1,9 +1,13 @@
 import { useState } from "react"
 import PenColorButton from "./PenColorButton"
 
-function DrawingMenu() {
-    const [color, setColor] = useState("#000000")
+interface DrawingMenuInterface{
+    sendColor:(color:string) => void,
+}
+
+function DrawingMenu({sendColor}:DrawingMenuInterface) {
     const [penSize, setPenSize] = useState(1)
+    const [color, setColor] = useState("#000000")
 
     const penColors = [
         "#000000", "#ffffff", "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff",
@@ -22,10 +26,12 @@ function DrawingMenu() {
     return (
         <>
             <div className="flex flex-row gap-3">
-                {penColors.map(color => <PenColorButton color={color} onClick={() => setColor(color)} />)}
+                {penColors.map((color, id) => {
+                    return <PenColorButton color={color} onClick={() => {sendColor(color); setColor(color)}} key={id} />
+                })}
                 <button className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded text-1xl">Clear canvas</button>
             </div>
-            <p className="text-white">Pen color: {color}</p>
+            <p className="text-white" style={{color: color}}>Current pen color</p>
             <div className="flex flex-row gap-3 mt-2">
                 <p className="text-white">Pen size: {penSize}</p>
                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 w-8 h-8 rounded text-1xl"

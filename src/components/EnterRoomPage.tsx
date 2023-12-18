@@ -1,13 +1,56 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dot from './Dot';
+import { Socket } from 'socket.io-client';
 
 interface EnterRoomPageInterface{
-    changeStage: (index:number) => void
+    changeStage: (index:number) => void,
+    socket: Socket,
+    sendRoomId: (gameId: string)=>void
 }
 
-function EnterRoomPage({changeStage}: EnterRoomPageInterface) {
-    const [username, setUsername] = useState('')
+function EnterRoomPage({changeStage, socket, sendRoomId}: EnterRoomPageInterface) {
+    const [roomCode, setRoomCode] = useState('')
     const [activeDot, setActiveDot] = useState(0);
+
+    useEffect(() => {
+        
+        //Handle room creation response
+        socket.on('roomCreated', ({ roomId }) => {
+            console.log("ROOM CREATED WITH ID: ", roomId);
+            sendRoomId(roomId);
+            //changeStage(1);
+        });
+    
+        // // Handle player joined response
+        // socket.on('playerJoined', (players) => {
+        //   setPlayers(players);
+        // });
+    
+    
+        // Handle join error response
+        socket.on('joinError', (error) => {
+          alert(error);
+        });
+    
+        // // Handle game started response
+        // socket.on('gameStarted', () => {
+        //   // Implement your logic for starting the game on the client side
+        //   console.log('Game started!');
+        // });
+    
+        // return () => {
+        //   // Cleanup event listeners on component unmount
+        //   socket.disconnect();
+        // };
+      }, []);
+    
+      const createRoom = () => {
+        socket.emit('createRoom');
+      };
+    
+      const joinRoom = () => {
+        socket.emit('joinRoom', roomCode);
+      };
 
     const howToPlayPhrases = [
         "When it's your turn, choose a word you want to draw!",
@@ -16,10 +59,6 @@ function EnterRoomPage({changeStage}: EnterRoomPageInterface) {
         "When it's not your turn, try to guess what other players are drawing!",
         "Score the most points and be crowned the winner at the end!"
     ];
-
-    function joinPrivateRoom() {
-		alert('Joining a private room')
-    }
 
     return (
         <div className="flex flex-col items-center bg-gray-800 h-screen">
@@ -31,12 +70,12 @@ function EnterRoomPage({changeStage}: EnterRoomPageInterface) {
                     <input 
                         className="border outline-none p-1 text-2xl"
                         type="text"
-                        placeholder="Enter your name"
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
+                        placeholder="Enter room code"
+                        value={roomCode}
+                        onChange={(event) => setRoomCode(event.target.value)}
                     />
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-2xl" onClick={()=>changeStage(1)}>Play!</button>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xl" onClick={joinPrivateRoom}>Create Private Room</button>
+                    <button className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-2xl" onClick={()=>joinRoom()}>Join Room</button>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xl" onClick={()=>createRoom()}>Create Private Room</button>
                 </div>
             </div>
             <div className="flex bg-gray-700 w-full flex-1 justify-center p-3">
