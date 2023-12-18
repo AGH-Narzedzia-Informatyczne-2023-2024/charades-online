@@ -5,7 +5,7 @@ interface PenColorButtonProps {
 
 function PenColorButton({color, onClick}: PenColorButtonProps) {
     return (
-        <div style={{backgroundColor: color}} className="w-8 h-8 hover:cursor-pointer" onClick={onClick}>
+        <div style={{backgroundColor: color}} className="w-8 h-8 hover:cursor-pointer border-1 border-white" onClick={onClick}>
         </div>
     )
 }

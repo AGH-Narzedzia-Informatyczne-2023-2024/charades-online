@@ -160,14 +160,18 @@ function GamePage({changeStage, socket, roomId}: GamePageInterface) {
         socket.emit('canvasData', dataURL);
       };
 
+    const styles = {
+        width: "clamp(800px, 70%, 1000px)"
+    }
+
     return (
-        <div className="flex flex-col items-center gap-3 bg-gray-800 h-screen">
+        <div className="flex flex-col items-center gap-3 bg-gray-800 h-screen flex-wrap p-5">
             <GameSessionSettings/>
             <button className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xl" onClick={()=>leaveRoom()}>LEAVE</button>
             <div className="text-white">RoomCode: {roomId}</div>
-            <div className="flex flex-row gap-3 w-full">
+            <div className="flex flex-row gap-3 w-full flex-wrap justify-center">
                 <canvas 
-                style={{width: "80%"}}
+                style={styles}
                 className="border-2 border-black" 
                 ref={canvasRef} 
                 onMouseDown={(event) => start(event)}
@@ -175,9 +179,10 @@ function GamePage({changeStage, socket, roomId}: GamePageInterface) {
                 onMouseUp={(event) => stop(event)}
                 onMouseOut={(event) => stop(event)}
                 ></canvas>
-                <div>   
-                    <div className="text-white">Zgadywane teksty</div>
-                    <input type="text"></input>
+                <div className="h-full flex flex-col gap-1">  
+                    <div className="flex flex-1 bg-white">
+                    </div> 
+                    <input className="focus:outline-none p-1" type="text" placeholder="Wpisz tutaj hasło..."></input>
                 </div>
             </div>
             <DrawingMenu sendColor={getColor}/>
