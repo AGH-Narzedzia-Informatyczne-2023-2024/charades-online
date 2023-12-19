@@ -182,7 +182,7 @@ function GamePage({changeStage, socket, roomId}: GamePageInterface) {
                 <div className="h-full flex flex-col gap-1">  
                     <div className="flex flex-1 bg-white">
                     </div> 
-                    <input className="focus:outline-none p-1" type="text" placeholder="Wpisz tutaj hasło..."></input>
+                    <input className="focus:outline-none p-1" type="text" placeholder="Type your guess..."></input>
                 </div>
             </div>
             <DrawingMenu sendColor={getColor}/>
